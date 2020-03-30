@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { selectSong } from '../actions';
+import { selectSong } from "../actions";
 
 // Gets state from Redux
 const mapStateToProps = state => {
-    console.log(state)
+  console.log(state);
   return { songs: state.songs };
 };
 
@@ -14,24 +14,23 @@ class SongList extends Component {
       return (
         <div className="item" key={song.title}>
           <div className="right floated content">
-            <button 
-                className='ui button primary'
-                onClick = {() => this.props.selectSong(song)}
-            >Select</button>
+            <button
+              className="ui button primary"
+              onClick={() => this.props.selectSong(song)}
+            >
+              Select
+            </button>
           </div>
-          <div className='content'>{song.title}</div>
+          <div className="content">{song.title}</div>
         </div>
       );
     });
-  };
+  }
 
   render() {
-    return <div className='ui divided list'>{this.renderList()}</div>;
+    return <div className="ui divided list">{this.renderList()}</div>;
   }
 }
 
 // the connect function works like the store.dispatch() function.
-export default connect(
-    mapStateToProps, 
-    { selectSong }
-)(SongList);
+export default connect(mapStateToProps, { selectSong })(SongList);
